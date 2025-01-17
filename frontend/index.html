@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表情包下载器</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 添加图标字体 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.7.0/fonts/remixicon.css">
+</head>
+<body>
+    <!-- 深色模式切换器 -->
+    <div class="theme-switch">
+        <i class="ri-sun-line"></i>
+    </div>
+
+    <div class="app-container">
+        <!-- 顶部标题区 -->
+        <header class="app-header">
+            <h1>表情包下载器</h1>
+            <p class="subtitle">输入链接，一键获取表情包</p>
+        </header>
+
+        <!-- 搜索区域 -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="ri-link"></i>
+                <input type="text" id="urlInput" placeholder="粘贴表情包链接，例如: /bqb/detail/id/123">
+                <button id="fetchBtn">
+                    <i class="ri-search-line"></i>
+                    <span>获取</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 主内容区 -->
+        <main class="content-area">
+            <!-- 加载动画 -->
+            <div id="loading" class="loading-container" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>正在获取表情包...</p>
+            </div>
+
+            <!-- 表情包网格 -->
+            <div id="imageGrid" class="image-grid">
+                <!-- 图片将通过 JS 动态添加 -->
+            </div>
+
+            <!-- 错误提示 -->
+            <div id="error" class="error-message" style="display: none;">
+                <i class="ri-error-warning-line"></i>
+                <p>获取失败，请检查链接是否正确</p>
+            </div>
+        </main>
+
+        <!-- 底部工具栏 -->
+        <footer class="app-footer">
+            <div class="selected-count">
+                已选择: <span id="selectedCount">0</span> 个
+            </div>
+            <button id="downloadSelected" class="download-button" disabled>
+                <i class="ri-download-cloud-line"></i>
+                <span>下载选中</span>
+            </button>
+        </footer>
+
+        <!-- 底部版权和引用说明 -->
+        <div class="credits">
+            <p>表情包来源: <a href="https://www.fabiaoqing.com/" target="_blank" rel="noopener noreferrer">发表情</a></p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
