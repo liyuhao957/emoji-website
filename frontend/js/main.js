@@ -7,9 +7,11 @@ const errorEl = document.getElementById('error');
 const imageGrid = document.getElementById('imageGrid');
 const selectedCount = document.getElementById('selectedCount');
 const downloadBtn = document.getElementById('downloadSelected');
+const selectAllBtn = document.getElementById('selectAllBtn');
 
 // 状态管理
 let selectedImages = new Set();
+let isAllSelected = false;
 
 // 主题切换
 themeSwitch.addEventListener('click', () => {
@@ -111,12 +113,40 @@ function updateSelectedCount() {
     downloadBtn.disabled = count === 0;
 }
 
+// 全选/取消全选
+selectAllBtn.addEventListener('click', () => {
+    isAllSelected = !isAllSelected;
+    const imageItems = imageGrid.querySelectorAll('.image-item');
+    
+    imageItems.forEach(item => {
+        const img = item.querySelector('img');
+        const imageUrl = decodeURIComponent(img.src.split('url=')[1]);
+        
+        if (isAllSelected) {
+            item.classList.add('selected');
+            selectedImages.add(imageUrl);
+        } else {
+            item.classList.remove('selected');
+            selectedImages.delete(imageUrl);
+        }
+    });
+    
+    // 更新按钮文本
+    selectAllBtn.querySelector('span').textContent = isAllSelected ? '取消全选' : '全选';
+    selectAllBtn.querySelector('i').className = `ri-checkbox-${isAllSelected ? 'indeterminate' : 'multiple'}-line`;
+    
+    updateSelectedCount();
+});
+
 // 获取表情包
 async function fetchEmojis(url) {
     console.log('开始获取表情包:', url);
     showLoading();
     imageGrid.innerHTML = '';
     selectedImages.clear();
+    isAllSelected = false;
+    selectAllBtn.querySelector('span').textContent = '全选';
+    selectAllBtn.querySelector('i').className = 'ri-checkbox-multiple-line';
     updateSelectedCount();
     
     try {
