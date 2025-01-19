@@ -56,8 +56,8 @@ class ImageScraperAxios {
             // 提取图片URL
             const images = new Set();
             
-            // 查找所有img标签
-            $('img').each((_, element) => {
+            // 查找主要内容区域的图片（排除热门表情区域）
+            $('.bqppdiv1').find('img').each((_, element) => {
                 const $img = $(element);
                 const src = $img.attr('src');
                 const dataOriginal = $img.attr('data-original');
