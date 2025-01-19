@@ -1,9 +1,10 @@
 const { AppError } = require('../utils/error-handler');
-const crawlerService = require('../services/crawler');
 const downloadService = require('../services/download');
 const cacheService = require('../services/cache');
 const config = require('../../config');
 const axios = require('axios');
+const ImageScraperAxios = require('../services/imageScraperAxios');
+const scraper = new ImageScraperAxios();
 
 class EmojiController {
     constructor() {
@@ -46,7 +47,7 @@ class EmojiController {
         console.log('解析后的URL:', fullUrl);
 
         try {
-            const images = await crawlerService.crawlPage(fullUrl);
+            const images = await scraper.getImages(fullUrl);
             console.log('爬取成功，图片数量:', images.length);
 
             res.json({
@@ -98,6 +99,7 @@ class EmojiController {
         }
     }
 
+    // 获取图片（代理和缓存）
     async getImage(req, res) {
         const { url } = req.query;
         if (!url) {

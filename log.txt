@@ -1,46 +1,43 @@
-main.js:116 开始获取表情包: https://www.fabiaoqing.com/bqb/detail/id/55046.html
-main.js:124 获取到表情包数据: {status: 'success', data: {…}}
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yklzdj30b00a0q2y.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yklzdj30b00a0q2y.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls43b180j30gn0gndgs.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls43b180j30gn0gndgs.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yaxl8j30k00k0wev.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yaxl8j30k00k0wev.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42ketdj30ar0ar74h.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42ketdj30ar0ar74h.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42zlauj308c08cwei.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42zlauj308c08cwei.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3z0iwgj30c80bomxo.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3z0iwgj30c80bomxo.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4100k3j30dq0dr74q.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4100k3j30dq0dr74q.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls41ni15j30qv0pvdh3.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls41ni15j30qv0pvdh3.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4221hzj30fo0fjgm4.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4221hzj30fo0fjgm4.jpg
-main.js:126 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls401mjrj30e40e4dg2.jpg
-main.js:46 创建图片元素: https://img.soutula.com/bmiddle/005L0HLIgy1hcls401mjrj30e40e4dg2.jpg
-main.js:131 表情包加载完成
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yklzdj30b00a0q2y.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls43b180j30gn0gndgs.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yaxl8j30k00k0wev.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42ketdj30ar0ar74h.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls42zlauj308c08cwei.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3z0iwgj30c80bomxo.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4100k3j30dq0dr74q.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls41ni15j30qv0pvdh3.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls4221hzj30fo0fjgm4.jpg
-main.js:68 图片加载成功: https://img.soutula.com/bmiddle/005L0HLIgy1hcls401mjrj30e40e4dg2.jpg
-api.js:23 
-        
-        
-       GET http://localhost:3000/api/download?url=https%3A%2F%2Fimg.soutula.com%2Fbmiddle%2F005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg 500 (Internal Server Error)
-downloadEmoji @ api.js:23
-(anonymous) @ main.js:176Understand this errorAI
-main.js:181 下载失败: https://img.soutula.com/bmiddle/005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg Error: 下载失败: 图片下载失败
-    at API.handleResponse (api.js:12:15)
-    at async HTMLButtonElement.<anonymous> (main.js:176:17)
-(anonymous) @ main.js:181Understand this errorAI
+C:\Users\Administrator\Desktop\emoji-website\backend (main -> origin) (emoji-website-backend@1.0.0)
+λ npm run dev
+
+> emoji-website-backend@1.0.0 dev
+> nodemon src/app.js
+
+[nodemon] 2.0.22
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node src/app.js`
+Server running at http://localhost:3000
+收到请求URL: https://www.fabiaoqing.com/bqb/detail/id/55046.html
+解析后的URL: https://www.fabiaoqing.com/bqb/detail/id/55046.html
+收到请求URL: https://www.fabiaoqing.com/bqb/detail/id/55046.html
+页面获取成功，开始解析...
+找到图片数量: 23
+图片列表: [
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls3zjtgtj30u00u90v3.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yklzdj30b00a0q2y.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls43b180j30gn0gndgs.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls3yaxl8j30k00k0wev.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls42ketdj30ar0ar74h.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls42zlauj308c08cwei.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls3z0iwgj30c80bomxo.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls4100k3j30dq0dr74q.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls41ni15j30qv0pvdh3.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls4221hzj30fo0fjgm4.jpg',
+  'https://img.soutula.com/bmiddle/005L0HLIgy1hcls401mjrj30e40e4dg2.jpg',
+  'https://img.soutula.com/large/ceeb653ely8gw2lt5l6vgj20fi0figmk.jpg',
+  'https://img.soutula.com/large/006APoFYly8gw2gzee5hej30hs0hs3zg.jpg',
+  'https://img.soutula.com/large/ceeb653ely8gw2gcin4kvg20qo0qogz5.gif',
+  'https://img.soutula.com/large/0078qrzmgy1gw2a3bn7uzj30go0e60tg.jpg',
+  'https://img.soutula.com/large/ceeb653ely8gvzmjwdov9j20bk0c0aax.jpg',
+  'https://img.soutula.com/large/ceeb653ely8gvz3h64s6aj20u00ugtd5.jpg',
+  'https://img.soutula.com/large/ceeb653ely8gvxgijztlej20dw0cxq3i.jpg',
+  'https://img.soutula.com/large/006APoFYly8gvwokepd82j30j60hhmz7.jpg',
+  'https://img.soutula.com/large/006APoFYly8gvu3k3p4ihg304m05i78b.gif',
+  'https://img.soutula.com/large/ceeb653ely8gvtuz35r8wg20800801kx.gif',
+  'https://img.soutula.com/large/006APoFYly8gvp2946qo8g608c08ce4y02.gif',
+  'https://img.soutula.com/large/006APoFYly8gvoj16h55bg603q01eq3u02.gif'
+]
+爬取成功，图片数量: 23

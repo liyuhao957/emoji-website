@@ -122,9 +122,9 @@ async function fetchEmojis(url) {
     try {
         const response = await window.api.getEmojis(url);
         console.log('获取到表情包数据:', response);
-        response.data.images.forEach(img => {
-            console.log('创建图片元素:', img.src);
-            imageGrid.appendChild(createImageElement(img.src));
+        response.data.images.forEach(imgUrl => {
+            console.log('创建图片元素:', imgUrl);
+            imageGrid.appendChild(createImageElement(imgUrl));
         });
         
         showLoading(false);
