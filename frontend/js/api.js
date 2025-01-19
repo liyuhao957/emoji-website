@@ -16,24 +16,13 @@ class API {
             return response.json();
         }
         
-        // 如果是图片响应，创建Blob并生成下载链接
+        // 如果是图片响应，返回blob
         if (contentType && contentType.includes('image/')) {
             const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            // 从Content-Disposition获取文件名，如果没有则使用默认名称
-            const disposition = response.headers.get('content-disposition');
-            let filename = 'emoji.png';
-            if (disposition && disposition.includes('filename=')) {
-                filename = disposition.split('filename=')[1].replace(/"/g, '');
-            }
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            return { status: 'success' };
+            return {
+                status: 'success',
+                data: blob
+            };
         }
         
         throw new Error('不支持的响应类型');

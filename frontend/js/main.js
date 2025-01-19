@@ -1,3 +1,7 @@
+const zipHelperModule = await import('./zipHelper.js');
+const ZipHelper = zipHelperModule.default;
+const zipHelper = new ZipHelper();
+
 // DOM 元素
 const themeSwitch = document.querySelector('.theme-switch');
 const urlInput = document.getElementById('urlInput');
@@ -195,31 +199,35 @@ function showToast(message, type = 'success') {
 // 下载选中的表情包
 downloadBtn.addEventListener('click', async () => {
     const totalCount = selectedImages.size;
-    let successCount = 0;
+    if (totalCount === 0) return;
 
     showLoading(true);
-    loadingEl.querySelector('p').textContent = `正在下载表情包 (0/${totalCount})...`;
+    loadingEl.querySelector('p').textContent = '准备下载...';
 
     try {
-        for (const url of selectedImages) {
-            try {
-                await window.api.downloadEmoji(url);
-                successCount++;
-                loadingEl.querySelector('p').textContent = 
-                    `正在下载表情包 (${successCount}/${totalCount})...`;
-            } catch (error) {
-                console.error('下载失败:', url, error);
-            }
-        }
+        // 重置 zip 实例
+        zipHelper.reset();
+        
+        // 添加文件到 zip
+        let processedCount = 0;
+        await zipHelper.addImages(Array.from(selectedImages), (fileName) => {
+            processedCount++;
+            loadingEl.querySelector('p').textContent = 
+                `正在处理: ${fileName} (${processedCount}/${totalCount})`;
+        });
+
+        // 生成并下载 zip
+        loadingEl.querySelector('p').textContent = '正在生成压缩包...';
+        await zipHelper.download('emojis.zip', (percent) => {
+            loadingEl.querySelector('p').textContent = 
+                `正在生成压缩包... ${Math.round(percent)}%`;
+        });
+
         showLoading(false);
-        if (successCount === totalCount) {
-            showToast('下载完成！');
-        } else {
-            showToast(`下载完成！成功: ${successCount}, 失败: ${totalCount - successCount}`, 'error');
-        }
+        showToast('下载完成！');
     } catch (error) {
-        showError('下载失败，请稍后重试');
-        console.error('Error:', error);
+        console.error('下载失败:', error);
+        showError(error.message || '下载失败，请稍后重试');
     }
 });
 
