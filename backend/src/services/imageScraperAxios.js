@@ -15,6 +15,24 @@ class ImageScraperAxios {
     }
 
     /**
+     * 判断是否为有效的图片URL
+     * @param {string} url 图片URL
+     * @returns {boolean} 是否有效
+     */
+    isValidImageUrl(url) {
+        if (!url) return false;
+        
+        // 检查是否来自soutula.com
+        if (!url.includes('img.soutula.com')) return false;
+        
+        // 检查是否为bmiddle或large目录下的图片
+        if (!url.includes('/bmiddle/') && !url.includes('/large/')) return false;
+        
+        // 检查是否为图片格式
+        return url.match(/\.(jpg|jpeg|png|gif)$/i) !== null;
+    }
+
+    /**
      * 获取页面图片
      * @param {string} url 目标URL
      * @returns {Promise<string[]>} 图片URL数组
@@ -40,14 +58,15 @@ class ImageScraperAxios {
             
             // 查找所有img标签
             $('img').each((_, element) => {
-                const src = $(element).attr('src');
-                const dataOriginal = $(element).attr('data-original');
+                const $img = $(element);
+                const src = $img.attr('src');
+                const dataOriginal = $img.attr('data-original');
                 
                 // 优先使用data-original属性
                 const imageUrl = dataOriginal || src;
                 
-                // 只收集来自img.soutula.com/bmiddle的图片
-                if (imageUrl && imageUrl.includes('img.soutula.com/bmiddle')) {
+                // 验证图片URL
+                if (this.isValidImageUrl(imageUrl)) {
                     images.add(imageUrl);
                 }
             });
