@@ -86,8 +86,29 @@ class ZipHelper {
             throw new Error(`Too many files. Maximum allowed: ${this.maxFiles}`);
         }
 
-        for (let i = 0; i < urls.length; i++) {
-            await this.addImage(urls[i], onProgress);
+        // 并发下载，每批5个
+        const batchSize = 5;
+        const batches = [];
+        for (let i = 0; i < urls.length; i += batchSize) {
+            batches.push(urls.slice(i, i + batchSize));
+        }
+
+        let processedCount = 0;
+        for (const batch of batches) {
+            // 并发处理每一批
+            await Promise.all(batch.map(async (url) => {
+                try {
+                    await this.addImage(url, (fileName) => {
+                        processedCount++;
+                        if (onProgress) {
+                            onProgress(fileName, processedCount, urls.length);
+                        }
+                    });
+                } catch (error) {
+                    console.error(`Error processing ${url}:`, error);
+                    // 继续处理其他图片
+                }
+            }));
         }
     }
 

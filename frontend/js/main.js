@@ -209,11 +209,9 @@ downloadBtn.addEventListener('click', async () => {
         zipHelper.reset();
         
         // 添加文件到 zip
-        let processedCount = 0;
-        await zipHelper.addImages(Array.from(selectedImages), (fileName) => {
-            processedCount++;
+        await zipHelper.addImages(Array.from(selectedImages), (fileName, current, total) => {
             loadingEl.querySelector('p').textContent = 
-                `正在处理: ${fileName} (${processedCount}/${totalCount})`;
+                `正在处理: ${fileName} (${current}/${total})`;
         });
 
         // 生成并下载 zip
