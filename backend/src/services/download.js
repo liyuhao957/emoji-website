@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const axios = require('axios');
 const path = require('path');
 const fs = require('fs');
 const config = require('../../config');
@@ -31,35 +31,32 @@ class DownloadService {
 
     // 下载图片
     async downloadImage(url) {
-        const browser = await chromium.launch({
-            headless: true
-        });
-
         try {
-            const context = await browser.newContext({
-                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            const response = await axios({
+                method: 'GET',
+                url: url,
+                responseType: 'arraybuffer',
+                timeout: 10000,
+                headers: {
+                    'Referer': 'https://fabiaoqing.com/',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                },
+                maxRedirects: 5
             });
 
-            const page = await context.newPage();
-            const response = await page.goto(url);
-
-            if (!response.ok()) {
-                throw new AppError('图片下载失败', 404);
-            }
-
-            const buffer = await response.body();
             const tempPath = this.getTempFilePath(url);
             
             // 保存图片到临时文件
-            fs.writeFileSync(tempPath, buffer);
+            fs.writeFileSync(tempPath, response.data);
 
             return {
                 path: tempPath,
                 filename: path.basename(tempPath),
-                contentType: response.headers()['content-type']
+                contentType: response.headers['content-type']
             };
-        } finally {
-            await browser.close();
+        } catch (error) {
+            console.error('下载图片失败:', error.message);
+            throw new AppError('图片下载失败', 500);
         }
     }
 
