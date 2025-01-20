@@ -25,8 +25,8 @@ class ImageScraperAxios {
         // 检查是否来自soutula.com
         if (!url.includes('img.soutula.com')) return false;
         
-        // 检查是否为bmiddle或large目录下的图片
-        if (!url.includes('/bmiddle/') && !url.includes('/large/')) return false;
+        // 检查是否为large目录下的图片
+        if (!url.includes('/large/')) return false;
         
         // 检查是否为图片格式
         return url.match(/\.(jpg|jpeg|png|gif)$/i) !== null;
@@ -40,6 +40,7 @@ class ImageScraperAxios {
     async getImages(url) {
         try {
             console.log('收到请求URL:', url);
+            console.log('解析后的URL:', url);
             
             // 发送GET请求获取页面内容
             const response = await this.axiosInstance.get(url, {
@@ -56,18 +57,28 @@ class ImageScraperAxios {
             // 提取图片URL
             const images = new Set();
             
-            // 查找主要内容区域的图片（排除热门表情区域）
-            $('.bqppdiv1').find('img').each((_, element) => {
+            // 查找所有懒加载图片
+            $('.ui.image.lazy').each((_, element) => {
                 const $img = $(element);
                 const src = $img.attr('src');
                 const dataOriginal = $img.attr('data-original');
+                const title = $img.attr('title') || '';
+                
+                console.log('找到图片元素:', {
+                    src,
+                    dataOriginal,
+                    title
+                });
                 
                 // 优先使用data-original属性
                 const imageUrl = dataOriginal || src;
                 
                 // 验证图片URL
                 if (this.isValidImageUrl(imageUrl)) {
+                    console.log('有效的图片URL:', imageUrl);
                     images.add(imageUrl);
+                } else {
+                    console.log('无效的图片URL:', imageUrl);
                 }
             });
             
